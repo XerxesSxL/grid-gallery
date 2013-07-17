@@ -1,0 +1,285 @@
+/* CSS Document */
+
+/* Utility */
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.clear {
+	clear:both;
+}
+
+.yellow {
+	color:#fbde05 !important;
+}
+
+/* Main */
+
+body {
+	font-size:10px;
+	font-family:"Lato", Arial, Helvetica, sans-serif;
+	background-color:#000;
+	color:#818181;
+}
+
+h1, h2, h3, h4, h4 {
+	font-family:"Josefin Slab", "Times New Roman", Times, serif;
+}
+
+a {
+	color:#fff;
+}
+
+p {
+	line-height:1.25;
+}
+
+/* Layout */
+
+.header, .footer {
+	position:fixed;
+	left:0;
+	width:100%;
+	z-index:9999;
+	background-color:#000;
+}
+
+.header {
+	top:0;
+}
+
+.footer {
+	bottom:0;
+}
+
+/* Header */
+
+.header-inner {
+	position:relative;
+	padding:15px;
+}
+
+.header-left {
+	position:absolute;
+	bottom:15px;
+	left:15px;
+}
+
+.header-logo {
+	width:637px;
+	margin:0 auto;
+}
+
+.header-right {
+	position:absolute;
+	bottom:15px;
+	right:15px;
+}
+
+.header-speaker {
+	position:absolute;
+	top:15px;
+	right:15px;
+}
+
+.header-social .social-link {
+	display:inline-block;
+	font-size:0px;
+	text-indent:-9999em;
+	width:23px;
+	height:23px;
+	background:url(../images/header-social-icons-23x23.png) 0 0 no-repeat;
+	overflow:hidden;
+	margin:0 0 15px 5px;
+}
+
+.header-social .social-link.twitter-link {
+	background-position:0 0;
+}
+
+.header-social .social-link.facebook-link {
+	background-position:0 -23px;
+}
+
+.header-social .social-link.youtube-link {
+	background-position:0 -46px;
+}
+
+.header-widgets .header-like {
+	margin-right:15px;
+}
+
+.header-widgets .header-tweet {
+	margin:0;
+}
+
+/* Footer */
+
+.footer-inner {
+	padding:15px;
+	position:relative;
+	height:50px;
+	text-transform:uppercase;
+}
+
+.footer-legal {
+	width:50%;
+	margin:7px auto 0 auto;
+}
+
+.footer-left {
+	position:absolute;
+	top:34px;
+	left:15px;
+}
+
+.footer-right {
+	position:absolute;
+	top:15px;
+	right:15px;
+}
+
+.rating-links {
+	width:155px;
+	margin:0 auto;
+}
+
+/* GRID ACCORDION CONTENT STYLES */
+
+.box-content-heading {
+	color:#fff;
+	text-transform:uppercase;
+	font-size:17px;
+	background:url(../images/box-content-heading-background-1x1.png) 0 0 repeat;
+	padding:25px;
+	margin:15px 0;
+}
+
+.box-content-content {
+	background:url(../images/box-content-heading-background-1x1.png) 0 0 repeat;
+	padding:25px;
+	font-size:13px;
+	width:75%;
+}
+
+.box-content-content-transparent {
+	background:transparent;
+}
+
+.box-content-gallery-thumbs {
+	width:auto;
+}
+
+.box-content-heading-left {
+	font-size:38px;
+	margin-top:5px;
+}
+
+.box-content-content p {
+	margin-bottom:15px;
+	color:#fff;
+}
+
+.box-content-heading-cta {
+	display:inline-block;
+	text-decoration:none;
+	height:15px;
+	background:url(../images/box-content-heading-cta-arrow-13x14.png) right 1px no-repeat;
+	padding-right:22px;
+	margin:19px 0 0 15px;
+}
+
+.box-gallery-thumbnail-block {
+	margin:0 25px 25px 0;
+}
+
+/* FULL SCREEN GALLERY */
+
+.photo-gallery {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:99999;
+	background-color:#000;
+}
+
+.photo-gallery .gallery-nav {
+	z-index:999999;
+	position:fixed;
+	top:45%;
+	width:26px;
+	height:54px;
+	overflow:hidden;
+	cursor:pointer;
+}
+
+.photo-gallery .gallery-prev {
+	background:url(../images/photos-arrow-left.png) 0 0 no-repeat;
+	left:25px;
+}
+
+.photo-gallery .gallery-next {
+	background:url(../images/photos-arrow-right.png) 0 0 no-repeat;
+	right:25px;
+}
+
+.gallery-overlay {
+	position:fixed;
+	bottom:0;
+	right:0;
+	width:0;
+	height:0;
+	overflow:hidden;
+}
+
+.gallery-close {
+	position:fixed;
+	top:25px;
+	right:25px;
+	width:88px;
+	height:32px;
+	background:url(../images/photos-close.png) 0 0 no-repeat;
+	overflow:hidden;
+	cursor:pointer;
+}
+
+/* GRID ACCORDION OVERRIDE STYLES */
+
+.grid-accordion-gallery-loading {
+	background-color:#000;
+}
+
+.view-port-grid-accordion-gallery .grid-accordion-gallery {
+	margin:140px auto 0 auto;
+}
+
+.grid-accordion-gallery td {
+	border:solid 1px #000;
+}
+
+/* JSCROLLPANE OVERRIDE STYLES */
+
+.jspVerticalBar {
+	background-color:#000;
+	width:5px;
+}
+
+.jspHorizontalBar {
+	background-color:#000;
+	height:5px;
+}
+
+.jspTrack {
+	background-color:#000;
+}
+
+.jspDrag {
+	background-color:#fbde05;
+}
