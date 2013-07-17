@@ -4,7 +4,7 @@
 	
 	$SLIDES = array();
 	$index = 0;
-	for( $n = 1; $n <= 12; $n++ ) {
+	for( $n = 1; $n <= 11; $n++ ) {
 		$SLIDES[ $index ] = array(
 			"src" => $DOCUMENT_ROOT . "images/grid-images/image-" . $n . ".jpg",
 			"width" => 1600,
@@ -16,6 +16,16 @@
 		);
 		$index++;	
 	}
+	
+	$SLIDES[12] = array(
+		"src" => $DOCUMENT_ROOT . "videos/1.m4v",
+		"width" => 640,
+		"height" => 360,
+		"thumb" => $DOCUMENT_ROOT . "videos/1.png",
+		"index" => 12,
+		"type" => "video",
+		"content-id" =>  "12-content"
+	);
 	
 	$IMAGES_STR = "";
 	for( $n = 1; $n <= 12; $n++ ) {

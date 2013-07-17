@@ -46,27 +46,19 @@ $(document).ready(function() {
 	*/
 	
 	grid_accordion_options = {
-		auto: true,
+		auto: false,
 		delay: 5000,
 		full_screen: true,
-		width: 1000,
-		height: 600,
 		target: $("#grid-accordion-gallery"),
-		fullscreen_top_offset: 0,
-		fullscreen_bottom_offset: 0,
 		expanded_width: 3.5, 
 		expanded_height: 2.5,
 		swf_source: DOCUMENT_ROOT + "swf",
 		num_rows: 3,
 		num_columns: 4,
-		animate_return: true,
 		resize_inactive_box: false,
-		force_static_move: false,
 		animate_internal_images_on_return: false,
 		box_content_scroll_top_offset: 118,
-		has_image_thumbnails: true,
-		click: false,
-		close_class: "close-content-box"
+		click: true
 	}
 	
 	grid_accordion.init(grid_accordion_options);
