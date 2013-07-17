@@ -125,7 +125,7 @@ $(document).ready(function() {
 ```
 
 Gallery options:<br />
-(You can find these in the included accordion.gallery.js file)
+(You can find these in the included grid.accordion.gallery.v2.js file)
 ```
 DEFAULT/SETTABLE OPTIONS:
 	width: 1024, // set to view port width if not full screen
