@@ -3,6 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>grid</title>
+		<link type="image/x-icon" href="images/favicon.ico?v=1" rel="shortcut icon" />
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo $DOCUMENT_ROOT; ?>js/jquery.jplayer.min.js"></script>
 		<script type="text/javascript" src="<?php echo $DOCUMENT_ROOT; ?>js/jquery.mousewheel.js"></script>

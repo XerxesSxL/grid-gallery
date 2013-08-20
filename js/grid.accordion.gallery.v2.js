@@ -567,6 +567,9 @@ var grid_accordion = {
 	
 	// grid clicks
 	set_up_grid_clicks: function() {
+		$("." + grid_accordion.options.box_thumbnail_class).css({
+			cursor: "pointer"
+		});
 		$("." + grid_accordion.options.box_class).click(function() {
 			var this_index = $(this).attr("index");
 			// clear slide show if present
@@ -575,6 +578,8 @@ var grid_accordion = {
 			}
 			// show all thumbnails
 			grid_accordion.show_box_thumbnails();
+			//	stop all videos
+			grid_accordion.stop_videos();
 			// figure out what classes to add and where
 			grid_accordion.set_box_classes(this_index);
 			// actually animate
@@ -602,6 +607,8 @@ var grid_accordion = {
 			grid_accordion.clear_box_classes();
 			// show all box thumbnails
 			grid_accordion.show_box_thumbnails();
+			//	stop all videos
+			grid_accordion.stop_videos();
 			// hide all generated box content
 			grid_accordion.hide_generated_content_boxes();
 			// stop videos
