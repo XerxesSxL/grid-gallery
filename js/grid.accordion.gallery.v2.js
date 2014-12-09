@@ -811,10 +811,13 @@ var grid_accordion = {
 	bind_videos: function() {
 		for( i in grid_accordion.videos ) {
 			$("#" + grid_accordion.videos[i].id).jPlayer({
-				loop: true,
+				loop: false,
 				swfPath: grid_accordion.options.swf_source,
 				supplied: "flv",
-				solution: "html, flash"
+				solution: "html, flash",
+				ended: function() {
+					grid_accordion.stop_videos();
+				}
 			});
 		}
 		// the video gets loaded after the gallery has been created already, so we need to resize all elements appropriately once to trigger the resize
