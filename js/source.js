@@ -42,7 +42,8 @@ $(document).ready(function() {
 			box_thumbnail_class: "grid-element-thumbnail", // best not to override in options otherwise css selectors will need to be changed
 			box_image_class: "grid-element-image", // best not to override in options otherwise css selectors will need to be changed
 			box_content_clone_class: "grid-content-clone", // best not to override in options otherwise css selectors will need to be changed
-			box_content_scroll_class: "grid-content-scrollable" // best not to override in options otherwise css selectors will need to be changed
+			box_content_scroll_class: "grid-content-scrollable", // best not to override in options otherwise css selectors will need to be changed
+			enable_box_content_fancy_scroll: true // whether or not to use jscrollpane for box content scrollable content
 	*/
 	
 	grid_accordion_options = {
@@ -58,7 +59,8 @@ $(document).ready(function() {
 		resize_inactive_box: false,
 		animate_internal_images_on_return: false,
 		box_content_scroll_top_offset: 118,
-		click: true
+		click: true,
+		enable_box_content_fancy_scroll: true
 	}
 	
 	grid_accordion.init(grid_accordion_options);

@@ -89,7 +89,8 @@
 		box_thumbnail_class: "grid-element-thumbnail", // best not to override in options otherwise css selectors will need to be changed
 		box_image_class: "grid-element-image", // best not to override in options otherwise css selectors will need to be changed
 		box_content_clone_class: "grid-content-clone", // best not to override in options otherwise css selectors will need to be changed
-		box_content_scroll_class: "grid-content-scrollable" // best not to override in options otherwise css selectors will need to be changed
+		box_content_scroll_class: "grid-content-scrollable", // best not to override in options otherwise css selectors will need to be changed
+		enable_box_content_fancy_scroll: true // whether or not to use jscrollpane for box content scrollable content
 	
 	EXAMPLES:
 		None
@@ -155,7 +156,8 @@ var grid_accordion = {
 		box_thumbnail_class: "grid-element-thumbnail", // best not to override in options otherwise css selectors will need to be changed
 		box_image_class: "grid-element-image", // best not to override in options otherwise css selectors will need to be changed
 		box_content_clone_class: "grid-content-clone", // best not to override in options otherwise css selectors will need to be changed
-		box_content_scroll_class: "grid-content-scrollable" // best not to override in options otherwise css selectors will need to be changed
+		box_content_scroll_class: "grid-content-scrollable", // best not to override in options otherwise css selectors will need to be changed
+		enable_box_content_fancy_scroll: true // whether or not to use jscrollpane for box content scrollable content
 	},
 	
 	// initialize
@@ -270,6 +272,7 @@ var grid_accordion = {
 							} else if( $(this).is("video") ) {
 								// if is video
 								html += '<div class="' + grid_accordion.options.box_element_class + ' ' + grid_accordion.options.box_video_element_class + ' jp-video">';
+									//html += '<div style="background:url(' + $(this).attr("thumb") + ') center center no-repeat; position:absolute; width:100%; height:100%; top:0; left:0;" class="' + grid_accordion.options.box_thumbnail_class + '"></div>';
 									html += '<img src="' + $(this).attr("thumb") + '" class="' + grid_accordion.options.box_thumbnail_class + '" />';
 									html += '<div class="jp-type-single">';
 										html += '<div id="jquery_jplayer_' + grid_accordion.active_box + '" class="' + grid_accordion.options.jplayer_class + '"></div>';
@@ -437,12 +440,12 @@ var grid_accordion = {
 					queue: false, 
 					complete: function() {
 						var this_index = $(this).attr("index");
-						var ratio = grid_accordion.boxes[this_index].width / grid_accordion.boxes[this_index].height;
-						var set_width = box_set_width;
-						var set_height = set_width / ratio;
-						if( set_height < box_set_height ) {
-							set_height = box_set_height;
-							set_width = ratio * set_height;
+						var box_ratio = THUMBNAIL_WIDTH / THUMBNAIL_HEIGHT;
+						var set_height = box_set_height;
+						var set_width = box_ratio * set_height;
+						if( set_width < box_set_width ) {
+							set_width = box_set_width;
+							set_height = box_ratio / set_width;
 						}
 						if( grid_accordion.options.animate_internal_images_on_return ) {
 							$(this).find("." + grid_accordion.options.box_thumbnail_class).stop(true, true).animate({
@@ -475,12 +478,12 @@ var grid_accordion = {
 				});
 			} else {
 				// we don't want to animate our grid
-				var ratio = grid_accordion.boxes[box_index].width / grid_accordion.boxes[box_index].height;
-				var set_width = box_set_width;
-				var set_height = set_width / ratio;
-				if( set_height < box_set_height ) {
-					set_height = box_set_height;
-					set_width = ratio * set_height;
+				var box_ratio = THUMBNAIL_WIDTH / THUMBNAIL_HEIGHT;
+				var set_height = box_set_height;
+				var set_width = box_ratio * set_height;
+				if( set_width < box_set_width ) {
+					set_width = box_set_width;
+					set_height = box_ratio / set_width;
 				}
 				grid_accordion.boxes[box_index].box.parent().css({
 					width: box_set_width + "px",
@@ -813,8 +816,7 @@ var grid_accordion = {
 			$("#" + grid_accordion.videos[i].id).jPlayer({
 				loop: false,
 				swfPath: grid_accordion.options.swf_source,
-				supplied: "flv",
-				solution: "html, flash",
+				supplied: "m4v",
 				ended: function() {
 					grid_accordion.stop_videos();
 				}
@@ -836,7 +838,7 @@ var grid_accordion = {
 		if( typeof grid_accordion.videos[grid_accordion.active_box] !== "undefined" ) {
 			if( !grid_accordion.videos[grid_accordion.active_box].loaded ) {
 				$("#" + grid_accordion.videos[grid_accordion.active_box].id).jPlayer("setMedia", {
-					flv: grid_accordion.videos[grid_accordion.active_box].src
+					m4v: grid_accordion.videos[grid_accordion.active_box].src
 				});
 				grid_accordion.videos[grid_accordion.active_box].loaded = true;
 			}
@@ -932,18 +934,20 @@ var grid_accordion = {
 		}
 		grid_accordion.boxes[box_index].content_clone.show();
 		// determine if there's anything scrollable within the content box, and if so, set up jscrollpane
-		var content_scrollable = grid_accordion.boxes[box_index].content_clone.find("." + grid_accordion.options.box_content_scroll_class);
-		if( content_scrollable.length && !grid_accordion.boxes[box_index].scroll_loaded ) {
-			var expanded_column_width = grid_accordion.options.expanded_width * grid_accordion.column_width;
-			var expanded_row_height = grid_accordion.options.expanded_height * grid_accordion.row_height;
-			content_scrollable.css({
-				width: expanded_column_width + "px",
-				height: expanded_row_height - grid_accordion.options.box_content_scroll_top_offset + "px"
-			});
-			content_scrollable.jScrollPane({
-				autoReinitialise: true
-			});
-			grid_accordion.boxes[box_index].scroll_loaded = true;
+		if( grid_accordion.options.enable_box_content_fancy_scroll ) {
+			var content_scrollable = grid_accordion.boxes[box_index].content_clone.find("." + grid_accordion.options.box_content_scroll_class);
+			if( content_scrollable.length && !grid_accordion.boxes[box_index].scroll_loaded ) {
+				var expanded_column_width = grid_accordion.options.expanded_width * grid_accordion.column_width;
+				var expanded_row_height = grid_accordion.options.expanded_height * grid_accordion.row_height;
+				content_scrollable.css({
+					width: expanded_column_width + "px",
+					height: expanded_row_height - grid_accordion.options.box_content_scroll_top_offset + "px"
+				});
+				content_scrollable.jScrollPane({
+					autoReinitialise: true
+				});
+				grid_accordion.boxes[box_index].scroll_loaded = true;
+			}
 		}
 	},
 	

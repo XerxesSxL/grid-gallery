@@ -13,6 +13,8 @@
 		<script type="text/javascript">
 			var DOCUMENT_ROOT = "<?php echo $DOCUMENT_ROOT; ?>";
 			var IMAGES = [<?php echo substr( $IMAGES_STR, 0, -2 ); ?>];
+			var THUMBNAIL_WIDTH = 1600;
+			var THUMBNAIL_HEIGHT = 1071;
 		</script>
 		<script type="text/javascript" src="<?php echo $DOCUMENT_ROOT; ?>js/source.js"></script>
 		<link rel="stylesheet" type="text/css" media="all" href="<?php echo $DOCUMENT_ROOT; ?>css/reset.css" />
